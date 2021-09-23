@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kotlin/Bacaanku/app/src/main/res/layout/activity_home.xml" value="0.259375" />
-        <entry key="..\:/Kotlin/Bacaanku/app/src/main/res/layout/item_berita.xml" value="0.259375" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/drawable/ic_logo.xml" value="0.23692307692307693" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/activity_home.xml" value="0.19972826086956522" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/activity_splash_screen.xml" value="0.17481884057971014" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/fragment_bookmark.xml" value="0.17481884057971014" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/fragment_news_detail.xml" value="0.1" />
+        <entry key="..\:/Porto/Android/Bacaanku/app/src/main/res/layout/fragment_splash_screen.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

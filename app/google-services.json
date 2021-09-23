@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452800795439",
+    "project_id": "bacaanku-46d63",
+    "storage_bucket": "bacaanku-46d63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452800795439:android:e0142b5344a4549b1e47da",
+        "android_client_info": {
+          "package_name": "com.id.bacaanku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452800795439-gvjm51buk1s5vv29nns2ob12umcnfulq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRSRfZuc__XGBEk-iap7zW7AgjA0mNboc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452800795439-gvjm51buk1s5vv29nns2ob12umcnfulq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
