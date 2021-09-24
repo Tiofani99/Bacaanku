@@ -62,7 +62,7 @@
                         android:padding="12dp"
                         android:textColor="?attr/colorOnPrimary"
                         android:background="@drawable/bg_rounded_latest"
-                        android:text="terbaru hari ini"
+                        android:text="Terbaru hari ini"
                         android:textSize="14dp" />
 
                     <TextView
