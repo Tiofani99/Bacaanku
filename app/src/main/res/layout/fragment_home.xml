@@ -46,7 +46,7 @@
                     app:sliderIndicatorSelectedColor="#5A5A5A"
                     app:sliderIndicatorUnselectedColor="#FFF"
                     app:sliderScrollTimeInSec="1"
-                    app:sliderStartAutoCycle="true"/>
+                    app:sliderStartAutoCycle="true" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,35 +57,36 @@
                         android:id="@+id/btnNew"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
-                        android:padding="12dp"
-                        android:textColor="?attr/colorOnPrimary"
                         android:background="@drawable/bg_rounded_latest"
-                        android:text="Terbaru hari ini"
-                        android:textSize="14dp" />
+                        android:padding="12dp"
+                        android:text="terbaru hari ini"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:maxLines="2"
                         android:text="text view"
-                        android:textSize="24dp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/tvMore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
                         android:maxLines="1"
                         android:text="Selengkapnya..."
-                        android:textSize="14dp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -97,7 +98,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Berita terbaru"
-                android:textColor="?attr/colorSecondary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +111,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/tampilkan_semua"
-                android:textColor="?attr/colorSecondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
@@ -134,7 +134,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Kategori"
-                android:textColor="?attr/colorSecondary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
