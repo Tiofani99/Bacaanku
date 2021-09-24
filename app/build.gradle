@@ -73,4 +73,8 @@ dependencies {
     //viewmodel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+
+    //image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
 }
