@@ -10,4 +10,7 @@
 
     <color name="black">#292929</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="base_light">#F5F5F5</color>
+    <color name="base_night">#4A4949</color>
 </resources>

@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".ui.main.HomeActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Bacaanku"/>
     </application>
 
 </manifest>

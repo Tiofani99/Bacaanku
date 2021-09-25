@@ -62,7 +62,7 @@
                         android:background="@drawable/bg_rounded_latest"
                         android:padding="12dp"
                         android:text="terbaru hari ini"
-                        android:textColor="?attr/colorOnPrimary"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <TextView
@@ -74,7 +74,7 @@
                         android:maxLines="2"
                         android:text="text view"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="?attr/colorOnPrimary"
+                        android:textColor="@color/white"
                         android:textSize="24sp" />
 
                     <TextView
@@ -85,7 +85,7 @@
                         android:layout_marginTop="32dp"
                         android:maxLines="1"
                         android:text="Selengkapnya..."
-                        android:textColor="?attr/colorOnPrimary"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
                 </LinearLayout>
 
