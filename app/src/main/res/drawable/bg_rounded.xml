@@ -6,6 +6,6 @@
         android:topRightRadius="0dp" />
 
     <solid
-        android:color="?attr/colorPrimary"/>
+        android:color="@color/bg_detail"/>
 
 </shape>

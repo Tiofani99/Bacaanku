@@ -13,4 +13,8 @@
 
     <color name="base_light">#F5F5F5</color>
     <color name="base_night">#4A4949</color>
+
+    <color name="bg_detail">#78363131</color>
+    <color name="toolbar_detail">#B3292929</color>
+    <color name="chip_detail">#B3F5F5F5</color>
 </resources>

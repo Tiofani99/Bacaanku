@@ -21,6 +21,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.Bacaanku.Detail" parent="Theme.Bacaanku.NoActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
     <style name="ItemsTouchable">
         <item name="android:clickable">true</item>
         <item name="android:drawSelectorOnTop">true</item>

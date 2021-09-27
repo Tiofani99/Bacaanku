@@ -20,4 +20,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.Bacaanku.Detail" parent="Theme.Bacaanku.NoActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
 </resources>
