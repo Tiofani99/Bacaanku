@@ -29,7 +29,7 @@ class NewsViewModel : ViewModel() {
 
     private fun getHeadlineNews(){
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getEverything("kesehatan",BuildConfig.API_KEY)
+        val client = ApiConfig.getApiService().getHeadlines()
         client.enqueue(object : Callback<NewsHeadlineResponse> {
             override fun onResponse(
                 call: Call<NewsHeadlineResponse>,

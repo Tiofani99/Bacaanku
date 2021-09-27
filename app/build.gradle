@@ -85,5 +85,5 @@ dependencies {
     implementation("io.coil-kt:coil:1.1.1")
 
     //convert time
-    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    implementation 'com.github.marlonlom:timeago:4.0.3'
 }
