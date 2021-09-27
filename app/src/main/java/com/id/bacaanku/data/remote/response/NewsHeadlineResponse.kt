@@ -1,6 +1,8 @@
 package com.id.bacaanku.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class NewsHeadlineResponse(
 
@@ -14,14 +16,14 @@ data class NewsHeadlineResponse(
 	val status: String? = null
 )
 
-
+@Parcelize
 data class ArticlesItem(
 
 	@field:SerializedName("publishedAt")
 	val publishedAt: String? = null,
 
 	@field:SerializedName("author")
-	val author: Any? = null,
+	val author: String? = null,
 
 	@field:SerializedName("urlToImage")
 	val urlToImage: String? = null,
@@ -40,13 +42,14 @@ data class ArticlesItem(
 
 	@field:SerializedName("content")
 	val content: String? = null
-)
+):Parcelable
 
+@Parcelize
 data class Source(
 
 	@field:SerializedName("name")
 	val name: String? = null,
 
 	@field:SerializedName("id")
-	val id: Any? = null
-)
+	val id: String? = null
+):Parcelable

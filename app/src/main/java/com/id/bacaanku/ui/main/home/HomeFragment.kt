@@ -13,6 +13,7 @@ import com.id.bacaanku.R
 import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.data.remote.response.ArticlesItem
 import com.id.bacaanku.databinding.FragmentHomeBinding
+import com.id.bacaanku.model.News
 import com.id.bacaanku.ui.main.NewsViewModel
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
         viewModel.getHeadlineNews()
         viewModel.headLineNews.observe(viewLifecycleOwner,{
             binding.rvNews.apply {
-                adapter = LatestNewsAdapter(it as ArrayList<ArticlesItem>)
+                adapter = LatestNewsAdapter(it as ArrayList<News>)
                 layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
             }
         })
@@ -63,7 +64,7 @@ class HomeFragment : Fragment() {
         viewModel.getHeadlineNews()
         viewModel.headLineNews.observe(viewLifecycleOwner,{
             binding.sliderImage.apply {
-                setSliderAdapter(SliderNewsAdapter(it as ArrayList<ArticlesItem>))
+                setSliderAdapter(SliderNewsAdapter(it as ArrayList<News>))
                 setIndicatorAnimation(IndicatorAnimationType.WORM)
                 setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
                 startAutoCycle()

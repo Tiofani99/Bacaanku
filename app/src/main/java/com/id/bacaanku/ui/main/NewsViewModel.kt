@@ -10,6 +10,8 @@ import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.data.remote.network.ApiConfig
 import com.id.bacaanku.data.remote.response.ArticlesItem
 import com.id.bacaanku.data.remote.response.NewsHeadlineResponse
+import com.id.bacaanku.model.News
+import com.id.bacaanku.utils.DataMapper
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,8 +23,8 @@ class NewsViewModel : ViewModel() {
     }
 
 
-    private val _headlineNews = MutableLiveData<List<ArticlesItem>>()
-    val headLineNews: LiveData<List<ArticlesItem>> get() = _headlineNews
+    private val _headlineNews = MutableLiveData<List<News>>()
+    val headLineNews: LiveData<List<News>> get() = _headlineNews
     fun getHeadlineNews() {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getHeadlines()
@@ -33,7 +35,8 @@ class NewsViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _headlineNews.value = response.body()?.articles!!
+                    val listNews = DataMapper.mapResponsesToDomain(response.body()?.articles!!)
+                    _headlineNews.value = listNews
                 } else {
                     Log.e(TAG, "onResponse: ${response.message()}")
                 }
