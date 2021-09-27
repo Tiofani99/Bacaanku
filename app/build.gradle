@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -76,14 +77,19 @@ dependencies {
 
     //image slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
-    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
 
     //navbottom
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
     //kotlin-coil
-    implementation("io.coil-kt:coil:1.1.1")
+    implementation("io.coil-kt:coil:0.11.0")
+    // For svg
+    implementation("io.coil-kt:coil-svg:0.11.0")
 
     //convert time
     implementation 'com.github.marlonlom:timeago:4.0.3'
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 }
