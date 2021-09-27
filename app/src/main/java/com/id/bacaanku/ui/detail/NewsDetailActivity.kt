@@ -16,6 +16,9 @@ import com.id.bacaanku.utils.COLLECTION
 import com.id.bacaanku.utils.Helper.toTimeAgo
 import kotlinx.android.synthetic.main.activity_news_detail.*
 import kotlin.math.abs
+import android.content.Intent
+import android.net.Uri
+
 
 class NewsDetailActivity : AppCompatActivity() {
 
@@ -40,6 +43,9 @@ class NewsDetailActivity : AppCompatActivity() {
             tvDesc.text = "${news.description}..."
             tvAuthor.text = news.author
             tvTime.text = news.publishedAt!!.toTimeAgo()
+            btnReadMore.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(news.url)))
+            }
         }
     }
 
