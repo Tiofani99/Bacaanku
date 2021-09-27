@@ -22,7 +22,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:text="Jelajah"
-                android:textColor="?attr/colorSecondary"
+               android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Telusuri berita aktual dan terpercaya"
-                android:textColor="?attr/colorSecondary"
+               android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -66,9 +66,25 @@
                     android:layout_height="32dp"
                     android:padding="4dp"
                     app:tint="@color/black"
-                    android:src="@drawable/v_search"/>
+                    android:src="@drawable/ic_search"/>
 
             </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabExplore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpBookmark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabExplore" />
 
 
 

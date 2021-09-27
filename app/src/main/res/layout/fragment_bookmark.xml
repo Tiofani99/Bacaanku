@@ -22,7 +22,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:text="Berita disini"
-                android:textColor="?attr/colorSecondary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,10 +35,26 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Baca berita tanpa koneksi internet"
-                android:textColor="?attr/colorSecondary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabBookmart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpBookmark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabBookmart" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
