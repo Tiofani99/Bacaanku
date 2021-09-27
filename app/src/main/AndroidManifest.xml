@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.id.bacaanku">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,20 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bacaanku.NoActionBar">
         <activity
+            android:name=".ui.detail.NewsDetailActivity"
+            android:theme="@style/Theme.Bacaanku.Detail"
+            android:exported="true" />
+        <activity
             android:name=".ui.splash.SplashScreenActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.main.HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.Bacaanku"/>
+            android:theme="@style/Theme.Bacaanku" />
     </application>
 
 </manifest>
