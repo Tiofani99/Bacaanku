@@ -14,6 +14,8 @@ import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.data.remote.response.ArticlesItem
 import com.id.bacaanku.databinding.FragmentHomeBinding
 import com.id.bacaanku.ui.main.NewsViewModel
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
+import com.smarteist.autoimageslider.SliderAnimations
 
 
 class HomeFragment : Fragment() {
@@ -35,6 +37,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showLatestNews()
         showCategory()
+        showSliderNews()
     }
     private fun showLatestNews(){
         viewModel.getHeadlineNews()
@@ -55,6 +58,21 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+    private fun showSliderNews(){
+        viewModel.getHeadlineNews()
+        viewModel.headLineNews.observe(viewLifecycleOwner,{
+            binding.sliderImage.apply {
+                setSliderAdapter(SliderNewsAdapter(it as ArrayList<ArticlesItem>))
+                setIndicatorAnimation(IndicatorAnimationType.WORM)
+                setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+                startAutoCycle()
+            }
+        })
+
+    }
+
+
 
     override fun onDestroy() {
         _binding = null
