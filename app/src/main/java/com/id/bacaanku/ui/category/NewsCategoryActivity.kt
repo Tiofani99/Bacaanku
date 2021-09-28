@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.databinding.ActivityNewsCategoryBinding
+import com.id.bacaanku.ui.category.adapter.SectionCategoryAdapter
 import com.id.bacaanku.utils.Helper.toolbar
 
 class NewsCategoryActivity : AppCompatActivity() {
