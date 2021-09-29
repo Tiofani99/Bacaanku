@@ -5,25 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.id.bacaanku.R
 import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.databinding.FragmentExploreBinding
 import com.id.bacaanku.ui.category.adapter.SectionCategoryAdapter
-import com.id.bacaanku.utils.Helper.hideView
-import com.id.bacaanku.utils.Helper.showView
+import com.id.bacaanku.ui.main.NewsViewModel
 
 
 class ExploreFragment : Fragment() {
 
-    private var listCategory: List<Category>? = null
     private var position: Int? = 0
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: NewsViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -37,78 +34,47 @@ class ExploreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setCollapsing()
+        setTabLayout()
 
     }
 
 
-    private fun setCollapsing() {
-        binding.collapsingToolbar.title = ""
-        binding.persistentSearchView.hideView()
-        binding.collapsingToolbar.setCollapsedTitleTextColor(
-            ContextCompat.getColor(
-                requireContext(),
-                R.color.white
+    private fun setTabLayout() {
+        viewModel.getAllCategory()
+        viewModel.listCategory.observe(viewLifecycleOwner, {
+            val newAdapter = SectionCategoryAdapter(
+                requireActivity() as AppCompatActivity,
+                it as ArrayList<Category>
             )
-        )
+            with(binding) {
 
-        binding.appbar.setExpanded(true)
-        val mAppBarLayout = (requireActivity()).findViewById<View>(R.id.appbar) as AppBarLayout
-        mAppBarLayout.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
-            var isShow = false
-            var scrollRange = -1
+                viewPager.adapter = newAdapter
 
-
-            override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout!!.totalScrollRange
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    binding.collapsingToolbar.title = " "
-                    binding.persistentSearchView.showView()
-                    isShow = true
-                } else if (isShow) {
-                    binding.collapsingToolbar.title = " "
-                    binding.persistentSearchView.hideView()
-                    isShow = false
-                }
+                viewPager.currentItem = position!!
+                TabLayoutMediator(tab, viewPager) { tab, position ->
+                    tab.text = it[position].name
+                }.attach()
+                viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageScrolled(
+                        position: Int,
+                        positionOffset: Float,
+                        positionOffsetPixels: Int
+                    ) {
+                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                        if (position > 0 && positionOffset == 0.0f && positionOffsetPixels == 0) {
+                            viewPager.layoutParams.height =
+                                viewPager.getChildAt(0).height
+                        }
+                    }
+                })
             }
-
         })
 
     }
 
-    private fun setTabLayout() {
-        val newAdapter = SectionCategoryAdapter(
-            requireActivity() as AppCompatActivity,
-            listCategory as ArrayList<Category>
-        )
-        with(binding.contentCategory) {
-
-            viewPager.adapter = newAdapter
-            TabLayoutMediator(tab, viewPager) { tab, position ->
-                tab.text = (listCategory as ArrayList<Category>)[position].name
-            }.attach()
-
-            viewPager.currentItem = position!!
-            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    if (position > 0 && positionOffset == 0.0f && positionOffsetPixels == 0) {
-                        viewPager.layoutParams.height =
-                            viewPager.getChildAt(0).height
-                    }
-                }
-            })
-
-            (activity as AppCompatActivity).supportActionBar!!.elevation = 0f
-
-
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
