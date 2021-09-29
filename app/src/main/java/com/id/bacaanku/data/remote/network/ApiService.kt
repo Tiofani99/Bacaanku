@@ -20,6 +20,6 @@ interface ApiService {
     @GET("everything")
     fun getEverything(
         @Query("q") query: String,
-        @Query("apiKey") apiKey: String? = BuildConfig.API_KEY
+        @Query("apiKey") apiKey: String? = "26504b3cb3f649ae97cb3ecab46d0f9e"
     ): Call<NewsHeadlineResponse>
 }

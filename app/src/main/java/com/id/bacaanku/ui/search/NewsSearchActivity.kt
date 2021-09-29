@@ -2,9 +2,11 @@ package com.id.bacaanku.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isEmpty
 import androidx.core.view.isNotEmpty
@@ -14,8 +16,10 @@ import com.id.bacaanku.databinding.ActivityNewsSearchBinding
 import com.id.bacaanku.model.News
 import com.id.bacaanku.ui.main.NewsViewModel
 import com.paulrybitskyi.persistentsearchview.PersistentSearchView
+import com.paulrybitskyi.persistentsearchview.adapters.model.SuggestionItem
 import com.paulrybitskyi.persistentsearchview.listeners.OnSearchConfirmedListener
 import com.paulrybitskyi.persistentsearchview.listeners.OnSearchQueryChangeListener
+import com.paulrybitskyi.persistentsearchview.listeners.OnSuggestionChangeListener
 
 class NewsSearchActivity : AppCompatActivity() {
 
@@ -42,9 +46,9 @@ class NewsSearchActivity : AppCompatActivity() {
             setOnClearInputBtnClickListener {
                 // Handle the clear input button click
             }
-            OnSearchConfirmedListener { searview, query ->
+            setOnSearchConfirmedListener  { searchView, query ->
                 searchData(query)
-                searview.collapse()
+                searchView.collapse()
             }
             setSuggestionsDisabled(true)
 
@@ -57,7 +61,7 @@ class NewsSearchActivity : AppCompatActivity() {
         viewModel.search.observe(this,{
             with(binding.rvSearch){
                 adapter = SearchAdapter(it as ArrayList<News>)
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(context)
             }
         })
     }
