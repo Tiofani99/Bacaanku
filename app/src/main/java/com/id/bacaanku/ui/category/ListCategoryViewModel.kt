@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.id.bacaanku.data.remote.network.ApiConfig
 import com.id.bacaanku.data.remote.response.NewsHeadlineResponse
 import com.id.bacaanku.model.News
-import com.id.bacaanku.ui.main.NewsViewModel
 import com.id.bacaanku.utils.DataMapper
 import retrofit2.Call
 import retrofit2.Callback
@@ -162,7 +161,29 @@ class ListCategoryViewModel : ViewModel() {
         })
     }
 
+    private val _headlineNews = MutableLiveData<List<News>>()
+    val headLineNews: LiveData<List<News>> get() = _headlineNews
+    fun getHeadlineNews() {
+        val client = ApiConfig.getApiService().getHeadlines()
+        client.enqueue(object : Callback<NewsHeadlineResponse> {
+            override fun onResponse(
+                call: Call<NewsHeadlineResponse>,
+                response: Response<NewsHeadlineResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val listNews = DataMapper.mapResponsesToDomain(response.body()?.articles!!)
+                    _headlineNews.value = listNews
+                } else {
+                    Log.e(TAG, "onResponse: ${response.message()}")
+                }
+            }
 
+            override fun onFailure(call: Call<NewsHeadlineResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+
+        })
+    }
 
 
 }

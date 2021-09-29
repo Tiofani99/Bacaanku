@@ -1,16 +1,16 @@
 package com.id.bacaanku.ui.category
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.id.bacaanku.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.databinding.FragmentCategoryBinding
-import com.id.bacaanku.ui.main.NewsViewModel
-import java.text.FieldPosition
+import com.id.bacaanku.model.News
+import com.id.bacaanku.ui.category.adapter.CategoryNewsAdapter
 
 
 private const val EXTRA_CATEGORY = "param1"
@@ -22,13 +22,13 @@ class CategoryFragment : Fragment() {
     private var position: Int? = 0
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NewsViewModel by activityViewModels()
+    private val viewModel: ListCategoryViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             listCategory = it.getParcelableArrayList(EXTRA_CATEGORY)
-            position = it.getInt(EXTRA_POSITION,0)
+            position = it.getInt(EXTRA_POSITION, 0)
         }
     }
 
@@ -36,14 +36,84 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCategoryBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentCategoryBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val categoryEndPoint = listCategory!![position!!].endPoint
+        setData(categoryEndPoint!!)
     }
+
+    private fun setData(categoryEndPoint: String? = null) {
+        when (position) {
+            0 -> {
+                viewModel.getCategory1()
+                viewModel.category1.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            1 -> {
+                viewModel.getCategory2()
+                viewModel.category2.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            2 -> {
+                viewModel.getCategory3()
+                viewModel.category3.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            3 -> {
+                viewModel.getCategory4()
+                viewModel.category4.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            4 -> {
+                viewModel.getCategory5()
+                viewModel.category5.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            5 -> {
+                viewModel.getCategory6()
+                viewModel.category6.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+            else -> {
+                viewModel.getHeadlineNews()
+                viewModel.headLineNews.observe(viewLifecycleOwner, { list ->
+                    binding.rvNewsByCategory.apply {
+                        adapter = CategoryNewsAdapter(list as ArrayList<News>)
+                        layoutManager = LinearLayoutManager(context)
+                    }
+                })
+            }
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
