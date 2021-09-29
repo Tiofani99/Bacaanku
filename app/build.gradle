@@ -101,4 +101,6 @@ dependencies {
     implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
     // optional - Guava ListenableFuture support
     implementation "androidx.paging:paging-guava:$paging_version"
+
+    implementation "com.paulrybitskyi.persistentsearchview:persistentsearchview:1.1.3"
 }

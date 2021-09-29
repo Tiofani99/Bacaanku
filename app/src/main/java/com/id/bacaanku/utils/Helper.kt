@@ -1,5 +1,6 @@
 package com.id.bacaanku.utils
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.github.marlonlom.utilities.timeago.TimeAgo
@@ -22,5 +23,15 @@ object Helper {
         toolbar.apply {
             setNavigationOnClickListener { finish() }
         }
+
+
+    }
+
+    fun View.hideView() {
+        this.visibility = View.GONE
+    }
+
+    fun View.showView() {
+        this.visibility = View.VISIBLE
     }
 }

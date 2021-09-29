@@ -1,13 +1,10 @@
 package com.id.bacaanku.utils
 
-import com.id.bacaanku.data.local.entity.NewsEntity
+
 import com.id.bacaanku.data.remote.response.ArticlesItem
 import com.id.bacaanku.model.News
 
 object DataMapper {
-    fun mapArticleItemToEntities(input: ArticlesItem) = NewsEntity(
-
-    )
 
     fun mapArticleItemToDomain(input: ArticlesItem): News {
         return News(
