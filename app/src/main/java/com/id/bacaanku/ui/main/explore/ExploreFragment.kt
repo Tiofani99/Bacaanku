@@ -1,5 +1,6 @@
 package com.id.bacaanku.ui.main.explore
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.id.bacaanku.data.remote.firebase.model.Category
 import com.id.bacaanku.databinding.FragmentExploreBinding
 import com.id.bacaanku.ui.category.adapter.SectionCategoryAdapter
 import com.id.bacaanku.ui.main.NewsViewModel
+import com.id.bacaanku.ui.search.NewsSearchActivity
 
 
 class ExploreFragment : Fragment() {
@@ -35,6 +37,10 @@ class ExploreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTabLayout()
+
+        binding.cvSearch.setOnClickListener {
+            startActivity(Intent(activity, NewsSearchActivity::class.java))
+        }
 
     }
 

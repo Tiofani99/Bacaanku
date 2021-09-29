@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bacaanku.NoActionBar">
         <activity
+            android:name=".ui.search.NewsSearchActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.category.NewsCategoryActivity"
             android:exported="true" />
         <activity
