@@ -49,6 +49,9 @@ class CategoryFragment : Fragment() {
     private fun setData(categoryEndPoint: String? = null) {
         when (position) {
             0 -> {
+                viewModel.isLoading1.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.getCategory1()
                 viewModel.category1.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
@@ -58,6 +61,9 @@ class CategoryFragment : Fragment() {
                 })
             }
             1 -> {
+                viewModel.isLoading2.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.getCategory2()
                 viewModel.category2.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
@@ -67,6 +73,9 @@ class CategoryFragment : Fragment() {
                 })
             }
             2 -> {
+                viewModel.isLoading3.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.getCategory3()
                 viewModel.category3.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
@@ -76,6 +85,9 @@ class CategoryFragment : Fragment() {
                 })
             }
             3 -> {
+                viewModel.isLoading4.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.getCategory4()
                 viewModel.category4.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
@@ -85,6 +97,9 @@ class CategoryFragment : Fragment() {
                 })
             }
             4 -> {
+                viewModel.isLoading5.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.getCategory5()
                 viewModel.category5.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
@@ -95,6 +110,9 @@ class CategoryFragment : Fragment() {
             }
             5 -> {
                 viewModel.getCategory6()
+                viewModel.isLoading6.observe(viewLifecycleOwner,{
+                    showLoading(it)
+                })
                 viewModel.category6.observe(viewLifecycleOwner, { list ->
                     binding.rvNewsByCategory.apply {
                         adapter = CategoryNewsAdapter(list as ArrayList<News>)
@@ -111,6 +129,16 @@ class CategoryFragment : Fragment() {
                     }
                 })
             }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.rvNewsByCategory.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.rvNewsByCategory.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
         }
     }
 

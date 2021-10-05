@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -57,6 +58,9 @@ class NewsSearchActivity : AppCompatActivity() {
     }
 
     private fun searchData(query: String){
+        viewModel.isLoadingSearch.observe(this,{
+            showLoading(it)
+        })
         viewModel.searchNews(query)
         viewModel.search.observe(this,{
             with(binding.rvSearch){
@@ -65,4 +69,15 @@ class NewsSearchActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.rvSearch.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.rvSearch.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
 }

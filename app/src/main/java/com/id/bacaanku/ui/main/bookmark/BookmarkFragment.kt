@@ -1,7 +1,6 @@
 package com.id.bacaanku.ui.main.bookmark
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import com.id.bacaanku.databinding.FragmentBookmarkBinding
 import com.id.bacaanku.model.News
 import com.id.bacaanku.ui.category.adapter.CategoryNewsAdapter
 import com.id.bacaanku.ui.main.ViewModelFactory
-import com.id.bacaanku.ui.main.home.CategoryAdapter
 import com.id.bacaanku.utils.DataMapper
 
 
@@ -29,17 +27,31 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentBookmarkBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentBookmarkBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = obtainViewModel(requireActivity() as AppCompatActivity)
-        viewModel.getBookmark().observe(viewLifecycleOwner,{
-            with(binding.rvNewsByCategory){
-                layoutManager = LinearLayoutManager(context)
-                adapter = CategoryNewsAdapter(DataMapper.mapEntityToDomain(it) as ArrayList<News>)
+        viewModel.getBookmark().observe(viewLifecycleOwner, {
+            if (it.isEmpty()) {
+                with(binding) {
+                    imageView2.visibility = View.VISIBLE
+                    tvState.visibility = View.VISIBLE
+                    rvNewsByCategory.visibility = View.GONE
+                }
+            } else {
+                with(binding) {
+                    imageView2.visibility = View.GONE
+                    tvState.visibility = View.GONE
+                    rvNewsByCategory.visibility = View.VISIBLE
+                    with(rvNewsByCategory) {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            CategoryNewsAdapter(DataMapper.mapEntityToDomain(it) as ArrayList<News>)
+                    }
+                }
             }
         })
 

@@ -51,17 +51,19 @@ class NewsViewModel : ViewModel() {
         })
     }
 
+    private val _isLoadingSearch = MutableLiveData<Boolean>()
+    val isLoadingSearch: LiveData<Boolean> get() = _isLoadingSearch
     private val _search = MutableLiveData<List<News>>()
     val search: LiveData<List<News>> get() = _search
     fun searchNews(query :String) {
-        _isLoading.value = true
+        _isLoadingSearch.value = true
         val client = ApiConfig.getApiService().getEverything(query)
         client.enqueue(object : Callback<NewsHeadlineResponse> {
             override fun onResponse(
                 call: Call<NewsHeadlineResponse>,
                 response: Response<NewsHeadlineResponse>
             ) {
-                _isLoading.value = false
+                _isLoadingSearch.value = false
                 if (response.isSuccessful) {
                     val listNews = DataMapper.mapResponsesToDomain(response.body()?.articles!!)
                     _search.value = listNews
@@ -71,6 +73,7 @@ class NewsViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<NewsHeadlineResponse>, t: Throwable) {
+                _isLoadingSearch.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
 

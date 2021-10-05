@@ -41,6 +41,9 @@ class HomeFragment : Fragment() {
         showSliderNews()
     }
     private fun showLatestNews(){
+        viewModel.isLoading.observe(viewLifecycleOwner,{
+            showLoading(it)
+        })
         viewModel.getHeadlineNews()
         viewModel.headLineNews.observe(viewLifecycleOwner,{
             binding.rvNews.apply {
@@ -71,6 +74,14 @@ class HomeFragment : Fragment() {
             }
         })
 
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
 
